@@ -1,0 +1,8 @@
+<h1>New tweet</h1>
+
+<%= form_for @tweet do |t| %>
+<div>Tweet: <%= t.text_area :content %></div>
+
+<div><%= t.submit %></div>
+
+<% end %>

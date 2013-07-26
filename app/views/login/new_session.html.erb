@@ -1,0 +1,11 @@
+<h1>Log in to shitty Twitter</h1>
+
+<%= form_for @user, url:login_path do |f| %>
+
+<div>
+	Email: <%= f.text_field :email %>
+</div>
+
+<%= f.submit "Log in" %>
+
+<% end %>

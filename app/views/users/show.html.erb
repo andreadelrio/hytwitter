@@ -1,0 +1,7 @@
+<h1><p><%= @user.handle %> - <%= @user.name %></p></h1>
+
+<% @user.tweets.each do |tweet| %>
+<div><%= link_to tweet.content, tweet_path(tweet) %></div>
+<% end %>
+
+
