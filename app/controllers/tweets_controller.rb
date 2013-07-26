@@ -23,11 +23,10 @@ class TweetsController < ApplicationController
     redirect_to user_path(@tweet.user)
   end
 
-  
   private
 
   def check_user_login
-    params.require(:tweet).permit(:content)
+    @current_user = User.find(session[:user_id])
   end
 
   def tweet_params

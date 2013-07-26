@@ -1,6 +1,7 @@
 <h1>My Tweets</h1>
 
 <% @tweets.each do |tweet| %>
-<div><%= link_to "Tweet ##{tweet.id}", tweet_path(tweet) %></div>
+
+<div><%= link_to "#{tweet.content}", tweet_path(tweet) %> <%= tweet_length(tweet) %> Posted by @<%= user_handle(tweet) %></div>
 
 <% end %>
