@@ -18,9 +18,17 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new(tweet_params)
-    @tweet.user = User.first
-    @tweet.save
-    redirect_to user_path(@tweet.user)
+    @tweet.user = @current_user
+        
+        respond_to do |format|
+      if @tweet.save
+        format.html { redirect_to @tweet, notice: 'Tweet was successfully posted.' }
+        format.json { render action: 'show', status: :created, location: @tweet }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @tweet.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

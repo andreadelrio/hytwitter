@@ -15,12 +15,6 @@ module TweetsHelper
 		"This tweet has #{tlength} characters."
 	end
 
-	# def user_handle (id)
-	# 	@user = User.find_by(tweet.user_id)
-	# 	uhandle = @user.handle
-	# 	return uhandle
-	# end	
-
 	def user_handle (tweet)
 		tweet.user.handle
 	end	
