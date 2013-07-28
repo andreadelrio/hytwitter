@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
-  before_action :check_user_login
+  before_action :check_user_login, only: [:new, :create]
+  rescue_from ActiveRecord::RecordNotFound, :with => :not_found
 
   def index
     @tweets = Tweet.all
@@ -17,7 +18,9 @@ class TweetsController < ApplicationController
   end
 
   def create
+
     @tweet = Tweet.new(tweet_params)
+   
     @tweet.user = @current_user
         
         respond_to do |format|
@@ -40,6 +43,12 @@ class TweetsController < ApplicationController
   def tweet_params
     params.require(:tweet).permit(:content)
   end
+
+  protected
+    def not_found
+      flash[:error] = "You need to log in to tweet."
+      redirect_to sign_in_path
+    end
 
 end
 
