@@ -1,7 +1,11 @@
-<h1><p><%= @user.handle %> - <%= @user.name %></p></h1>
+<h2><p>@<%= @user.handle %> - <%= @user.name %></p></h1>
 
 <% @user.tweets.each do |tweet| %>
-<div><%= link_to tweet.content, tweet_path(tweet) %></div>
+<div class="entry_user">
+	<div><span class="label"><%= tweet.created_at.to_formatted_s(:short)%></span></div>
+
+	<div class="ttext"><h4><%= link_to tweet.content, tweet_path(tweet) %></h4></div>
+</div>
 <% end %>
 
 

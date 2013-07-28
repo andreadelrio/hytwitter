@@ -2,6 +2,7 @@
 <h3>Possibly the shittiest fake twitter experience on the web.</h3>
 
 <%= form_for @user do |f| %>
+ <%= render 'shared/error_messages' %>
 <div>
 	<%= f.label :name %>
 	<%= f.text_field :name %>

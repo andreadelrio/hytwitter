@@ -11,7 +11,7 @@ Twitter::Application.routes.draw do
 
   get '/login', to: 'logins#new_session', as: 'sign_in' 
   post '/login', to: 'logins#create_session'
-  get '/logout', to: 'logins#logout'
+  get '/logout', to: 'logins#logout', as: 'sign_out'
 
   root 'tweets#index'
 

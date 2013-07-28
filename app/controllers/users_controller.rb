@@ -11,10 +11,16 @@ class UsersController < ApplicationController
     	@user = User.find(params[:id])
   	end
 
-  	def create
-    	@user = User.create(user_params)
-    	redirect_to 'user_path(@user)'
-  	end
+  def create
+    	@user = User.new(user_params)
+      if @user.save
+      flash[:success] = "Welcome back to Fake Twitter!"
+    	redirect_to(root_path)
+  	  else
+      render 'new'
+      end
+  end
+
 
   private
 
