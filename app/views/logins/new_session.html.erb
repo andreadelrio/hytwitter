@@ -1,0 +1,24 @@
+<h1>Log in to shitty Twitter</h1>
+
+<%= form_for @user, url:login_path do |f| %>
+
+<div>
+	e-mail: <%= f.text_field :email %>
+</div>
+
+<div>
+	Password: <%= f.text_field :password %>
+</div>
+<div>
+  <% if @user.errors.any? %>	
+  <% @user.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+  <% end %>
+</div>      
+
+<%= f.submit "Log in" %>
+
+<div>New user? <%= link_to 'Sign up', new_user_path %> now!</div>
+
+<% end %>

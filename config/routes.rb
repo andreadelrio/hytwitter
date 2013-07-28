@@ -9,11 +9,11 @@ Twitter::Application.routes.draw do
   # You can have the root of your site routed with "root"
   resources :tweets, except: [:edit, :update]
 
-  get '/login', to: 'login#new_session'
-  post '/login', to: 'login#create_session'
-  get '/logout', to: 'login#logout'
+  get '/login', to: 'logins#new_session', as: 'sign_in' 
+  post '/login', to: 'logins#create_session'
+  get '/logout', to: 'logins#logout'
 
-  root 'welcome#index'
+  root 'tweets#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
