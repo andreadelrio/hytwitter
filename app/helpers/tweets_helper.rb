@@ -15,9 +15,11 @@ module TweetsHelper
 		"This tweet has #{tlength} characters."
 	end
 
-	def user_handle (tweet)
-		tweet.user.handle
-	end	
+	# def user_handle (tweet)
+	# 	if session[:user_id] != nil
+	# 	tweet.user.handle
+	# 	end
+	# end	
 
 	
 end

@@ -25,7 +25,7 @@ class LoginsController < ApplicationController
   def logout
       session[:user_id] = nil
       #reset_session
-      redirect_to root_url
+      redirect_to sign_in_path
   end
 
  

@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :check_user_login
+  before_action :check_user_login, except: [:index]
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
 
   def index
@@ -9,6 +9,7 @@ class TweetsController < ApplicationController
   def show
     @tweet = Tweet.find(params[:id])
   end
+
 
   def destroy
   end

@@ -3,6 +3,8 @@
 @<%= @user.handle %> - <%= @user.name %>
 </div>
 
+<%= render "/tweets/tweet_form" %>
+
 
 <% @user.tweets.each do |tweet| %>
 <div class="entry_user">

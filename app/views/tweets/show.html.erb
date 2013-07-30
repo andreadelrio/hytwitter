@@ -1,5 +1,5 @@
 
-<h4><%= @tweet.content %> - Posted by @<%= user_handle(@tweet) %></h4>
+<h4><%= @tweet.content %> - Posted by @<%= @tweet.user.handle %></h4>
 <h5>This tweet was posted <%= time_ago_in_words(@tweet.created_at) %> ago.</h5>
 
 <h4><%= link_to "All Tweets", tweets_path %></h4>

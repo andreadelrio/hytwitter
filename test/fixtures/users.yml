@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
+jane:
+  name: FirstUser
   email: MyString
   handle: MyString
 
-two:
+john:
   name: MyString
   email: MyString
   handle: MyString

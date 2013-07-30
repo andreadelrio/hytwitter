@@ -3,7 +3,7 @@
 <% @tweets.each do |tweet| %>
 <div class='entry_users'>
 <h4><%= link_to "#{tweet.content}", tweet_path(tweet) %></h4>
-<div><%= tweet_length(tweet) %> Posted by @<%= user_handle(tweet) %></div>
+<div><%= tweet_length(tweet) %> Posted by @<%= tweet.user.handle %></div>
 <div>This tweet was posted <%= time_ago_in_words(tweet.created_at) %> ago.</div>
 </div>
 <br>
