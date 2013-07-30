@@ -1,7 +1,9 @@
 Twitter::Application.routes.draw do
 
 
-  resources :users
+  resources :users, except: [:edit]
+
+  get '/profile', to: 'users#edit'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

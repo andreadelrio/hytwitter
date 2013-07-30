@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :check_user_login, only: [:new, :create]
+  before_action :check_user_login
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
 
   def index
@@ -25,7 +25,7 @@ class TweetsController < ApplicationController
         
         respond_to do |format|
       if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully posted.' }
+        format.html { redirect_to tweets_path, notice: 'Tweet was successfully posted.' }
         format.json { render action: 'show', status: :created, location: @tweet }
       else
         format.html { render action: 'new' }
@@ -36,19 +36,13 @@ class TweetsController < ApplicationController
 
   private
 
-  def check_user_login
-    @current_user = User.find(session[:user_id])
-  end
+ 
 
   def tweet_params
     params.require(:tweet).permit(:content)
   end
 
-  protected
-    def not_found
-      flash[:error] = "You need to log in to tweet."
-      redirect_to sign_in_path
-    end
+
 
 end
 

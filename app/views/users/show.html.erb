@@ -1,4 +1,8 @@
-<h2><p>@<%= @user.handle %> - <%= @user.name %></p></h1>
+<div>
+<%= image_tag(@user.avatar_url, :width => 100) if @user.avatar_url.present? %>
+@<%= @user.handle %> - <%= @user.name %>
+</div>
+
 
 <% @user.tweets.each do |tweet| %>
 <div class="entry_user">

@@ -13,7 +13,7 @@ class LoginsController < ApplicationController
         session[:user_id] = user.id 
         redirect_to user_path(user)
   	  else
-        flash[:error] = 'Invalid email/password combination'
+        flash.now[:error] = 'Invalid email/password combination'
      	  redirect_to sign_in_path
 
       end
@@ -24,6 +24,7 @@ class LoginsController < ApplicationController
 
   def logout
       session[:user_id] = nil
+      #reset_session
       redirect_to root_url
   end
 

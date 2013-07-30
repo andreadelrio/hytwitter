@@ -1,7 +1,12 @@
 require 'test_helper'
 
 class TweetsControllerTest < ActionController::TestCase
-  test "should get index" do
+  def login_as(user)
+    session[:user_id] = user
+  end
+
+  test "should get index when logged in" do
+    login_as(users(:one))
     get :index
     assert_response :success
   end
@@ -11,29 +16,15 @@ class TweetsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit
-    assert_response :success
-  end
-
-  test "should get update" do
-    get :update
-    assert_response :success
-  end
-
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
-  end
-
   test "should get new" do
     get :new
     assert_response :success
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
+  test "should get create when logged in" do
+    login_as(users(:one))
+    post :create, tweet: {content: "Some valid content"}
+    assert_redirected_to tweets_path
   end
 
 end

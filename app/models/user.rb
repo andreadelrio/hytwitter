@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
 	validates :email, presence: true
 	validates :password, presence: true
 	validates :handle, presence: true
+	mount_uploader :avatar, AvatarUploader
+
 end
