@@ -15,26 +15,28 @@ class UsersController < ApplicationController
 
   def create
     	@user = User.new(user_params)
+     
       if @user.save
-      flash.now[:success] = "Welcome back to Fake Twitter!"
-      session[:user_id] = @user.id 
-    	redirect_to(root_path)
-      
-  	  else
+       UserMailer.confirm_email(@user).deliver #"confirm_email" method under => app/mailers/user_mailer.rb
+       redirect_to user_path(@user)
+      else
       render 'new'
-      end
+    end
   end
 
   def update
     @current_user.update_attributes(user_params)
     redirect_to user_path(@current_user)
-
   end  
+
+  def confirm
+    head :ok
+  end
 
   private
 
   	def user_params
-    	params.require(:user).permit(:name, :email, :handle, :password, :avatar, :remove_avatar)
+    	params.require(:user).permit(:name, :email, :handle, :password, :avatar, :remove_avatar, :password_confirmation)
   	end
 
 end

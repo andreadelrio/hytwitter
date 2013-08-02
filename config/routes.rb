@@ -1,7 +1,11 @@
 Twitter::Application.routes.draw do
 
 
-  resources :users, except: [:edit]
+  resources :users, except: [:edit] do
+    member do
+      get 'confirm' #/users/:id/column
+    end  
+  end
 
   get '/profile', to: 'users#edit'
 

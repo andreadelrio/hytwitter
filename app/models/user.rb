@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
 	validates :password, presence: true
 	validates :handle, presence: true
 	mount_uploader :avatar, AvatarUploader
-
+	has_secure_password
 end

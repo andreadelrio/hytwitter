@@ -7,13 +7,13 @@ class LoginsController < ApplicationController
   def create_session
 
   	#user = User.find_by(email: params[:user][:email])
-    user = User.find_by_email_and_password(params[:user][:email],params[:user][:password])
+    user = User.find_by(email: params[:user][:email])
     
-     	if user
+     	if user && user.authenticate(params[:user][:password])
         session[:user_id] = user.id 
         redirect_to user_path(user)
   	  else
-        flash.now[:error] = 'Invalid email/password combination'
+        flash[:error] = 'Invalid email/password combination'
      	  redirect_to sign_in_path
 
       end
